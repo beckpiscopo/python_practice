@@ -22,7 +22,7 @@ class LinkedList:
     def __init__(self): 
         self.head = None
 
-    def isEmpty(self): 
+    def is_empty(self): 
         return self.head == None
     
     def size(self): 
@@ -36,5 +36,33 @@ class LinkedList:
         while current: 
             count += 1
             current = current.next_node
-
         return count
+
+    def add(self, data): 
+        """
+        Ads a new node containing data at the head of the list 
+        Takes O(1) time
+        """
+        new_node = Node(data)
+        new_node.next_node = self.head
+        self.head = new_node
+
+    def __repr__(self): 
+        """
+        Return a string rerpresentation of the list
+        Takes O(n) time
+        """
+
+        nodes = []
+        current = self.head
+        
+        while current: 
+            if current is self.head:                     # checks if node is head node
+                nodes.append("[Head: %s]" % current.data)
+            elif current.next_node is None:              # checks if node is tail node
+                nodes.append("[Tail: %s]" % current.data)
+            else: 
+                nodes.append("[%s]" % current.data)
+            
+            current = current.next_node
+        return '->'.join(nodes)
