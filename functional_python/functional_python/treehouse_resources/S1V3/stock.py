@@ -51,9 +51,6 @@ def sales_price(book):
     return book
 
 
-# sales_books = list(map(sales_price, BOOKS))
-
-""" Implementation of the map() function as a list comprehension. Only use list comprehensions for tasks that don't need a lot of lines of code; for more complex functions, use map()"""
-sales_books2 = [sales_price(book) for book in BOOKS]
+sales_books = list(map(sales_price, BOOKS))
 print(BOOKS[0].price)
-print(sales_books2[0].price)
+print(sales_books[0].price)
