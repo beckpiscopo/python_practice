@@ -1,3 +1,5 @@
+"""
+
 testString = "I am so damn bored and irritable and just want a cigarette."
 
 print(testString.upper())
@@ -23,3 +25,11 @@ print(total)
 avg = total/len(nums_Array)
 
 print(avg)
+
+"""
+numbers = [1, 2, 4, 6, 9, 10, 112]
+letters = ['a', 'b', 'c', 'd', 'e']
+
+numbers.extend(letters)
+
+print(zip(numbers, letters))
