@@ -1,4 +1,4 @@
-class Node: 
+class Node:
     """
     An object for storing a single node of a linked list.
     Models two attributes - data and the link to the next node in the list
@@ -7,25 +7,26 @@ class Node:
     data = None
     next_node = None
 
-    def __init__(self,data): 
+    def __init__(self, data):
         self.data = data
-    
-    def __repr__(self): 
+
+    def __repr__(self):
         return "<Node data : %s>" % self.data
 
-class LinkedList: 
+
+class LinkedList:
     """
     Singly linked list
     """
     head = None
 
-    def __init__(self): 
+    def __init__(self):
         self.head = None
 
-    def is_empty(self): 
+    def is_empty(self):
         return self.head == None
-    
-    def size(self): 
+
+    def size(self):
         """ 
         Returns the number of nodes in the list 
         Takes O(n) time
@@ -33,12 +34,12 @@ class LinkedList:
         current = self.head
         count = 0
 
-        while current: 
+        while current:
             count += 1
             current = current.next_node
         return count
 
-    def add(self, data): 
+    def add(self, data):
         """
         Ads a new node containing data at the head of the list 
         Takes O(1) time
@@ -55,14 +56,14 @@ class LinkedList:
         """
 
         current = self.head
-        while current: 
-            if current.data == key: 
+        while current:
+            if current.data == key:
                 return current
-            else: 
+            else:
                 current = current.next_node
         return None
 
-    def insert(self, data, index): 
+    def insert(self, data, index):
         """
         Inserts a new node containing data at index position
         Insertion takes O(1) runtime
@@ -79,16 +80,16 @@ class LinkedList:
             position = index
             current = self.head
 
-            while position > 1: 
+            while position > 1:
                 current = node.next_node
                 position -= 1
-            prev_node = current 
+            prev_node = current
             next_node = current.next_node
 
             prev_node.next_node = new
             new.next_node = next_node
 
-    def remove(self, key): 
+    def remove(self, key):
         """ 
         Searches for and removes node containing data that matches key 
         Returns the node or none if it doesn't exist. 
@@ -96,21 +97,36 @@ class LinkedList:
         """
         current = self.head
         previous = None
-        found = False 
-        while current and not found: 
-            if current.data == key and current is self.head: 
+        found = False
+        while current and not found:
+            if current.data == key and current is self.head:
                 found = True
                 self.head = current.next_node
-            elif current.data == key: 
+            elif current.data == key:
                 found = True
                 previous.next_node = current.next_node
-            else: 
+            else:
                 previous = current
                 current = current.next_node
         return current
 
+    def node_at_index(self, index):
+        """
+        Returns a node at a given index
+        Instead of having to traverse list in split function, we can call node at index and pass midpoint index
+        """
+        if index == 0:
+            return self.head
+        else:
+            current = self.head
+            position = 0
 
-    def __repr__(self): 
+            while position < index:
+                current = current.next_node
+                position += 1
+                return current
+
+    def __repr__(self):
         """
         Return a string rerpresentation of the list
         Takes O(n) time
@@ -118,14 +134,14 @@ class LinkedList:
 
         nodes = []
         current = self.head
-        
-        while current: 
+
+        while current:
             if current is self.head:                     # checks if node is head node
                 nodes.append("[Head: %s]" % current.data)
             elif current.next_node is None:              # checks if node is tail node
                 nodes.append("[Tail: %s]" % current.data)
-            else: 
+            else:
                 nodes.append("[%s]" % current.data)
-            
+
             current = current.next_node
         return '->'.join(nodes)
