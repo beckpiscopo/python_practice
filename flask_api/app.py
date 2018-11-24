@@ -1,14 +1,25 @@
-from flask import flask
-DEBUG = True
-HOST = '0.0.0.0'
+
+from flask import Flask
+from flask_restful import Resource, Api
+
+import models
+from resources.courses import courses_api
+from resources.reviews import reviews_api
+
 PORT = 8080
-
 app = Flask(__name__)
+api = Api(app)
+app.register_blueprint(courses_api)
+app.register_blueprint(reviews_api, url_prefix='/api/v1')
 
 
-@app.route('/')
-def hello_world():
-    return 'Hello World'
+class HelloWorld(Resource):
+    def get(self):
+        return ("Hello World")
 
-    if __name__ == '__main__':
-        app.run(debug=DEBUG, host=HOST, port=PORT)
+
+api.add_resource(HelloWorld, '/')
+
+if __name__ == '__main__':
+    models.initialize()
+    app.run(debug=True, port=PORT)
