@@ -103,9 +103,8 @@ def merge(left, right):
 
     return merged
 
+
 # Verify that algorithm works
-
-
 l = LinkedList()
 l.add(20)
 l.add(32)
@@ -116,4 +115,5 @@ l.add(56)
 print(l)
 
 sorted_linked_list = merge_sort(l)
+
 print(sorted_linked_list)
