@@ -1,7 +1,6 @@
-Regular Expressions in Python/video 4 start/names.txt
+*.pyc
+*.cpython-37.pyc
 
-/Users/brittanybeckett-harrison/Desktop/devProjects/python_practice/intro_to_algorithms/practice.py
-../.vscode/
-.vscode/settings.json
-g
-.vscode/launch.json
+launch.json
+settings.json
+intro_to_data_structures/__pycache__/linked_list.cpython-37.pyc

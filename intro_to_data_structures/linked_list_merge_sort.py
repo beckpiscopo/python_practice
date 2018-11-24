@@ -6,7 +6,8 @@ def merge_sort(linked_list):
    Sorts a linked list in ascending order
    - Recursively divide a linked lists into sublists containing a single node
    - Repeatedly merge sublists to produce sorted sublists until one remains
-   - Returns one sorted list
+
+   Returns one sorted list
    """
 
     if linked_list.size() == 1:
