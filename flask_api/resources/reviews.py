@@ -1,10 +1,37 @@
 from flask import jsonify, Blueprint
-from flask_restful import Resource, Api
+from flask_restful import Resource, Api, reqparse, inputs, fields
 
 import models
 
 
 class ReviewList(Resource):
+    def __init__(self):
+        """
+        Input validation using reqparse
+        """
+        self.reqparse = reqparse.RequestParser()
+        self.reqparse.add_argument(
+            'course',
+            type=inputs.positive,
+            required=True,
+            help='No course provided',
+            location=['form', 'json']
+        )
+        self.reqparse.add_argument(
+            'rating',
+            type=inputs.int_range(1, 5),
+            required=True,
+            help='No rating provided',
+            location=['form', 'json']
+        )
+        self.reqparse.add_argument(
+            'comment',
+            required=False,
+            location=['form', 'json'],
+            default=''
+        )
+        super().__init__()
+
     def get(self):
         return jsonify({'reviews': [{'course': 1, 'rating': 5}]})
 

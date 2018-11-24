@@ -13,13 +13,6 @@ app.register_blueprint(courses_api)
 app.register_blueprint(reviews_api, url_prefix='/api/v1')
 
 
-class HelloWorld(Resource):
-    def get(self):
-        return ("Hello World")
-
-
-api.add_resource(HelloWorld, '/')
-
 if __name__ == '__main__':
     models.initialize()
     app.run(debug=True, port=PORT)
