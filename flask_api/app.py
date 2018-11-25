@@ -3,10 +3,10 @@ from flask import Flask
 from flask_restful import Resource, Api
 
 import models
+import config
 from resources.courses import courses_api
 from resources.reviews import reviews_api
 
-PORT = 8080
 app = Flask(__name__)
 api = Api(app)
 app.register_blueprint(courses_api)

@@ -1,5 +1,6 @@
 import datetime
 
+from argon2 import PasswordHasher
 from peewee import *
 
 DATABASE = SqliteDatabase('courses.sqlite')
