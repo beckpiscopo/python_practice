@@ -15,4 +15,4 @@ app.register_blueprint(reviews_api, url_prefix='/api/v1')
 
 if __name__ == '__main__':
     models.initialize()
-    app.run(debug=True, port=PORT)
+    app.run(debug=config.DEBUG, port=config.PORT)
