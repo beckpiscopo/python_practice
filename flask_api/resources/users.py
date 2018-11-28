@@ -1,6 +1,6 @@
-from flask import jsonify, Blueprint, abort
+from flask import jsonify, Blueprint, abort, make_response
 from flask_restful import (Resource, Api, reqparse, inputs, fields,
-                           marshal, marshal_with)
+                           marshal, marshal_with, url_for)
 
 import models
 
@@ -36,3 +36,12 @@ class UserList(Resource):
             help='No password provided',
             location=['form', 'json']
         )
+
+
+users_api = Blueprint('resources.users', __name__)
+api = Api(users_api)
+api.add_resources(
+    UserList,
+    '/users',
+    endpoint='users'
+)

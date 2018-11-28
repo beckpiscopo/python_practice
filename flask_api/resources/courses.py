@@ -3,6 +3,7 @@ from flask_restful import (Resource, Api, reqparse,
                            inputs, fields, marshal,
                            marshal_with, url_for)
 
+from auth import auth
 import models
 
 # This dictionary discribes the fields included when this API gives a resource.
